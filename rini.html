@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify - Your Favourite Music is Here</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="script.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav>
+        <ul>
+            <li class="brand">
+                <img src="logo.png" alt="Spotify Logo">
+                Spotify
+            </li>
+
+            <li>Home</li>
+            <li>About</li>
+        </ul>
+    </nav>
+
+    <!-- Main Container -->
+
+    <div class="container">
+
+        <!-- Song List -->
+
+        <div class="songList">
+
+            <h1>Best of NCS - No Copyright Sounds</h1>
+
+            <div class="songItemContainer">
+
+                <!-- Song 1 -->
+
+                <div class="songItem">
+                    <img src="covers/1.jpg" alt="">
+                    <div class="master">
+                        <span class="songName">Warriyo - Mortals</span>
+                        <span class="songTime">
+                            00:00
+                            <i class="far fa-play-circle btn"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Song 2 -->
+
+                <div class="songItem">
+                    <img src="covers/2.jpg" alt="">
+                    <div class="master">
+                        <span class="songName">Cielo - Huma Huma</span>
+                        <span class="songTime">
+                            00:00
+                            <i class="far fa-play-circle btn"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Song 3 -->
+
+                <div class="songItem">
+                    <img src="covers/3.jpg" alt="">
+                    <div class="master">
+                        <span class="songName">DEAF KEV - Invincible</span>
+                        <span class="songTime">
+                            00:00
+                            <i class="far fa-play-circle btn"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Song 4 -->
+
+                <div class="songItem">
+                    <img src="covers/4.jpg" alt="">
+                    <div class="master">
+                        <span class="songName">Different Heaven - My Heart</span>
+                        <span class="songTime">
+                            00:00
+                            <i class="far fa-play-circle btn"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Song 5 -->
+
+                <div class="songItem">
+                    <img src="covers/5.jpg" alt="">
+                    <div class="master">
+                        <span class="songName">Janji - Heroes Tonight</span>
+                        <span class="songTime">
+                            00:00
+                            <i class="far fa-play-circle btn"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Song 6 -->
+
+                <div class="songItem">
+                    <img src="covers/6.jpg" alt="">
+                    <div class="master">
+                        <span class="songName">Rabba</span>
+                        <span class="songTime">
+                            00:00
+                            <i class="far fa-play-circle btn"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Song 7 -->
+
+                <div class="songItem">
+                    <img src="covers/7.jpg" alt="">
+                    <div class="master">
+                        <span class="songName">Sakhiyaan</span>
+                        <span class="songTime">
+                            00:00
+                            <i class="far fa-play-circle btn"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Song 8 -->
+
+                <div class="songItem">
+                    <img src="covers/8.jpg" alt="">
+                    <div class="master">
+                        <span class="songName">Bhula Dena</span>
+                        <span class="songTime">
+                            00:00
+                            <i class="far fa-play-circle btn"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Song 9 -->
+
+                <div class="songItem">
+                    <img src="covers/9.jpg" alt="">
+                    <div class="master">
+                        <span class="songName">Tumhari Kasam</span>
+                        <span class="songTime">
+                            00:00
+                            <i class="far fa-play-circle btn"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Song 10 -->
+
+                <div class="songItem">
+                    <img src="covers/10.jpg" alt="">
+                    <div class="master">
+                        <span class="songName">Na Jaana</span>
+                        <span class="songTime">
+                            00:00
+                            <i class="far fa-play-circle btn"></i>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Bottom Player -->
+
+    <div id="bottom">
+
+        <input type="range" id="myProgressBar" value="0" min="0" max="100">
+
+        <div class="icons">
+
+            <div id="previous">
+                <i class="fas fa-3x fa-step-backward"></i>
+            </div>
+
+            <div id="masterPlay">
+                <i class="far fa-3x fa-play-circle"></i>
+            </div>
+
+            <div id="next">
+                <i class="fas fa-3x fa-step-forward"></i>
+            </div>
+
+            <div id="loopButton">
+                <i class="fas fa-2x fa-redo"></i>
+            </div>
+
+        </div>
+
+        <div class="songInfo">
+
+            <img src="playing.gif"
+                width="42"
+                id="gif"
+                style="opacity:0; transition:opacity .4s ease;"
+                alt="Playing">
+
+            <span id="masterSongName">
+                Warriyo - Mortals
+            </span>
+
+        </div>
+
+    </div>
+
+    <!-- JavaScript -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
