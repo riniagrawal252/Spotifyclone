@@ -88,7 +88,8 @@ nav ul li{
 }
 
 .songItem img{
-    width: 43px;
+    width: 45px;
+    height: 45px;
     margin: 0 23px;
     border-radius: 34px;
 }
@@ -114,5 +115,142 @@ nav ul li{
       background-color: red;
     }
   }
+  /* ==========================
+   Progress Bar
+========================== */
+
+.progress-container{
+    width: 85%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#currentTime,
+#duration{
+    width: 45px;
+    color: white;
+    font-size: 15px;
+    text-align: center;
+}
+
+#myProgressBar{
+    flex: 1;
+    cursor: pointer;
+}
+
+/* ==========================
+   Song Info
+========================== */
+
+.songInfo{
+    position: absolute;
+    left: 10vw;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Varela Round', sans-serif;
+}
+
+.songInfo img{
+    transition: .3s;
+}
+
+/* ==========================
+   Like Button
+========================== */
+
+#likeBtn{
+    color:#b3b3b3;
+    font-size:22px;
+    cursor:pointer;
+    transition:.3s ease;
+}
+
+#likeBtn:hover{
+    color:#1DB954;
+    transform:scale(1.25);
+}
+
+#likeBtn.liked{
+    color:#1DB954;
+    animation:heartBeat .4s ease;
+}
+
+@keyframes heartBeat{
+
+    0%{transform:scale(1);}
+    30%{transform:scale(1.4);}
+    60%{transform:scale(1.2);}
+    100%{transform:scale(1);}
+
+}
+
+/* ==========================
+   Song Hover
+========================== */
+
+.songItem{
+    transition:.3s ease;
+    cursor:pointer;
+}
+
+.songItem:hover{
+    background:#1e1e1e;
+    color:white;
+    transform:translateX(8px);
+    box-shadow:0 8px 20px rgba(0,0,0,.4);
+}
+
+.songItem:hover img{
+    transform:rotate(6deg) scale(1.1);
+}
+
+.songItem img{
+    transition:.3s;
+}
+
+.songItem:hover .btn{
+    color:#1DB954;
+    transform:scale(1.2);
+}
+
+/* ==========================
+   Active Song
+========================== */
+
+.songItem.active{
+    background:#1DB954;
+    color:white;
+    transform:translateX(8px);
+    box-shadow:0 0 20px rgba(29,185,84,.5);
+}
+
+.songItem.active .songName,
+.songItem.active .songTime{
+    color:white;
+}
+
+/* ==========================
+   Bottom Controls
+========================== */
+
+.icons div{
+    margin:0 12px;
+    transition:.3s;
+}
+
+.icons div:hover{
+    color:#1DB954;
+    transform:scale(1.15);
+}
+
+/* ==========================
+   Playing GIF
+========================== */
+
+#gif{
+    transition:opacity .3s ease;
+}
 
   

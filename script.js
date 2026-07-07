@@ -17,7 +17,8 @@ const btns = Array.from(document.getElementsByClassName("btn"));
 
 const next_btn = document.getElementById("next");
 const prev_btn = document.getElementById("previous");
-const loopButton = document.getElementById("loopButton");
+const currentTime = document.getElementById("currentTime");
+const duration = document.getElementById("duration");
 
 // ==========================
 // Songs
@@ -25,12 +26,12 @@ const loopButton = document.getElementById("loopButton");
 
 const songs = [
     {
-        songName: "Warriyo - Mortals",
+        songName: "Mor mukut sir kanan kundal-Meerabai bhajan",
         filePath: "songs/song1.mp3",
         coverPath: "covers/1.jpg"
     },
     {
-        songName: "Cielo - Huma Huma",
+        songName: "Yahi asha lekar ati hoon main - Bhajan",
         filePath: "songs/song2.mp3",
         coverPath: "covers/2.jpg"
     },
@@ -101,19 +102,25 @@ function makeAllPlays() {
     });
 
 }
+function loadSong(index){
 
-function loadSong(index) {
+    songIndex=index;
 
-    songIndex = index;
+    audioElement.pause();
 
-    audioElement.src = songs[index].filePath;
-    audioElement.currentTime = 0;
+    audioElement.src=songs[index].filePath;
+    audioElement.load();
+    audioElement.currentTime=0;
 
-    masterSongName.innerText = songs[index].songName;
+    masterSongName.innerText=songs[index].songName;
 
+    highlightSong(index);
 }
 
 loadSong(songIndex);
+audioElement.addEventListener("loadedmetadata", () => {
+    duration.innerText = formatTime(audioElement.duration);
+});
 
 // ==========================
 // Master Play
@@ -139,22 +146,20 @@ masterPlay.addEventListener("click", () => {
 // Song Buttons
 // ==========================
 
-btns.forEach((btn, index) => {
+songItems.forEach((element, i) => {
 
-    btn.addEventListener("click", () => {
+    element.querySelector("img").src = songs[i].coverPath;
+    element.querySelector(".songName").innerText = songs[i].songName;
 
-        if (songIndex === index && !audioElement.paused) {
+    const tempAudio = new Audio();
 
-            audioElement.pause();
-            return;
+    tempAudio.src = songs[i].filePath;
 
-        }
+    tempAudio.addEventListener("loadedmetadata", () => {
 
-        makeAllPlays();
-
-        loadSong(index);
-
-        audioElement.play();
+        element.querySelector(".songTime").innerHTML =
+            `${formatTime(tempAudio.duration)}
+            <i class="far fa-play-circle btn"></i>`;
 
     });
 
@@ -199,14 +204,16 @@ audioElement.addEventListener("pause", () => {
 
 audioElement.addEventListener("timeupdate", () => {
 
-    if (audioElement.duration) {
+    if (!isNaN(audioElement.duration)) {
 
-        let progress = parseInt(
-            (audioElement.currentTime / audioElement.duration) * 100
-        );
-
+        let progress = (audioElement.currentTime / audioElement.duration) * 100;
         myProgressBar.value = progress;
 
+        document.getElementById("currentTime").innerText =
+            formatTime(audioElement.currentTime);
+
+        document.getElementById("duration").innerText =
+            formatTime(audioElement.duration);
     }
 
 });
@@ -237,6 +244,9 @@ next_btn.addEventListener("click", () => {
     }
 
     loadSong(songIndex);
+    audioElement.addEventListener("loadedmetadata", () => {
+    duration.innerText = formatTime(audioElement.duration);
+});
 
     audioElement.play();
 
@@ -257,6 +267,9 @@ prev_btn.addEventListener("click", () => {
     }
 
     loadSong(songIndex);
+    audioElement.addEventListener("loadedmetadata", () => {
+    duration.innerText = formatTime(audioElement.duration);
+});
 
     audioElement.play();
 
@@ -279,6 +292,9 @@ audioElement.addEventListener("ended", () => {
         }
 
         loadSong(songIndex);
+        audioElement.addEventListener("loadedmetadata", () => {
+    duration.innerText = formatTime(audioElement.duration);
+});
 
         audioElement.play();
 
@@ -290,14 +306,43 @@ audioElement.addEventListener("ended", () => {
 // Loop Button
 // ==========================
 
-let isLoop = false;
 
-loopButton.addEventListener("click", () => {
+function formatTime(time) {
 
-    isLoop = !isLoop;
+    if (isNaN(time)) return "0:00";
 
-    audioElement.loop = isLoop;
+    let minutes = Math.floor(time / 60);
+    let seconds = Math.floor(time % 60);
 
-    loopButton.classList.toggle("active");
+    return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+}
+const likeBtn = document.getElementById("likeBtn");
+
+likeBtn.addEventListener("click",()=>{
+
+    likeBtn.classList.toggle("liked");
+
+    if(likeBtn.classList.contains("liked")){
+
+        likeBtn.classList.remove("fa-regular");
+        likeBtn.classList.add("fa-solid");
+
+    }
+
+    else{
+
+        likeBtn.classList.remove("fa-solid");
+        likeBtn.classList.add("fa-regular");
+
+    }
 
 });
+function highlightSong(index){
+
+    songItems.forEach(item=>{
+        item.classList.remove("active");
+    });
+
+    songItems[index].classList.add("active");
+
+}
